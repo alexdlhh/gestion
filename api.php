@@ -29,26 +29,22 @@ switch($option){
 /**Company */
 switch($option){
     case 'addCompany':
-        $name = $_POST['name'];
-        $type = $_POST['type'];
+        $name = $_POST['data']['name'];
+        $type = $_POST['data']['type'];
         $sql="INSERT INTO `Company` (`name`, `type`) VALUES
         ('{$name}', {$type});";
         if($bd->execute_single_query($sql)){
             echo json_encode(array('status' => 'success'));
-        }else{
-            
-        }   
+        } 
         break;
     case 'updateCompany':
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-        $type = $_POST['type'];
+        $id = $_POST['data']['id'];
+        $name = $_POST['data']['name'];
+        $type = $_POST['data']['type'];
         $sql="UPDATE `Company` SET `name` = '{$name}', `type` = {$type} WHERE `Company`.`id` = {$id};";
         if($bd->execute_single_query($sql)){
             echo json_encode(array('status' => 'success'));
-        }else{
-            
-        }   
+        } 
         break;
     case 'deleteCompany':
         $id = $_POST['id'];
@@ -66,7 +62,8 @@ switch($option){
             $sql="SELECT * FROM `Company` WHERE `{$where}` LIKE '%{$value}%'";
         }
         $sql="SELECT * FROM `Company`";
-        $result = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $result = $bd->get_rows();
         if($result){
             echo json_encode($result);
         }else{
@@ -141,31 +138,31 @@ switch($option){
 /** Contratos */
 switch($option){
     case 'addContract':
-        $id_cliente = $_POST['id_cliente'];
-        $company = $_POST['company'];
-        $mes_vto = $_POST['mes_vto'];
-        $fecha_emision = $_POST['fecha_emision'];
-        $cliente = $_POST['cliente'];
-        $refer_cliente = $_POST['refer_cliente'];
-        $cif = $_POST['cif'];
-        $direccion = $_POST['direccion'];
-        $telefono = $_POST['telefono'];
-        $servicios = $_POST['servicios'];
-        $company1 = $_POST['company1'];
-        $agente = $_POST['agente'];
-        $company2 = $_POST['company2'];
-        $poliza = $_POST['poliza'];
-        $identifier = $_POST['identifier'];
-        $descripcion = $_POST['descripcion'];
-        $contratado = $_POST['contratado'];
-        $pneta = $_POST['pneta'];
-        $hsp = $_POST['hsp'];
-        $total = $_POST['total'];
-        $status = $_POST['status'];
-        $cobro = $_POST['cobro'];
-        $importe = $_POST['importe'];
-        $fecha = $_POST['fecha'];
-        $contidad_pte = $_POST['contidad_pte'];
+        $id_cliente = $_POST['data']['id_cliente'];
+        $company = $_POST['data']['company'];
+        $mes_vto = $_POST['data']['mes_vto'];
+        $fecha_emision = $_POST['data']['fecha_emision'];
+        $cliente = $_POST['data']['cliente'];
+        $refer_cliente = $_POST['data']['refer_cliente'];
+        $cif = $_POST['data']['cif'];
+        $direccion = $_POST['data']['direccion'];
+        $telefono = $_POST['data']['telefono'];
+        $servicios = $_POST['data']['servicios'];
+        $company1 = $_POST['data']['company1'];
+        $agente = $_POST['data']['agente'];
+        $company2 = $_POST['data']['company2'];
+        $poliza = $_POST['data']['poliza'];
+        $identifier = $_POST['data']['identifier'];
+        $descripcion = $_POST['data']['descripcion'];
+        $contratado = $_POST['data']['contratado'];
+        $pneta = $_POST['data']['pneta'];
+        $hsp = $_POST['data']['hsp'];
+        $total = $_POST['data']['total'];
+        $status = $_POST['data']['status'];
+        $cobro = $_POST['data']['cobro'];
+        $importe = $_POST['data']['importe'];
+        $fecha = $_POST['data']['fecha'];
+        $contidad_pte = $_POST['data']['contidad_pte'];
         $sql="INSERT INTO `Contratos` (`id_cliente`, `company`, `mes_vto`, `fecha_emision`, `cliente`, `refer_cliente`, `cif`, `direccion`, `telefono`, `servicios`, `company1`, `agente`, `company2`, `poliza`, `identifier`, `descripcion`, `contratado`, `pneta`, `hsp`, `total`, `status`, `cobro`, `importe`, `fecha`, `contidad_pte`) VALUES
         ({$id_cliente}, {$company}, {$mes_vto}, '{$fecha_emision}', '{$cliente}', '{$refer_cliente}', '{$cif}', '{$direccion}', '{$telefono}', '{$servicios}', '{$company1}', {$agente}, '{$company2}', '{$poliza}', '{$identifier}', '{$descripcion}', '{$contratado}', '{$pneta}', '{$hsp}', '{$total}', '{$status}', '{$cobro}', '{$importe}', '{$fecha}', '{$contidad_pte}');";
         if($bd->execute_single_query($sql)){
@@ -175,32 +172,32 @@ switch($option){
         }   
         break;
     case 'updateContract':
-        $id = $_POST['id'];
-        $id_cliente = $_POST['id_cliente'];
-        $company = $_POST['company'];
-        $mes_vto = $_POST['mes_vto'];
-        $fecha_emision = $_POST['fecha_emision'];
-        $cliente = $_POST['cliente'];
-        $refer_cliente = $_POST['refer_cliente'];
-        $cif = $_POST['cif'];
-        $direccion = $_POST['direccion'];
-        $telefono = $_POST['telefono'];
-        $servicios = $_POST['servicios'];
-        $company1 = $_POST['company1'];
-        $agente = $_POST['agente'];
-        $company2 = $_POST['company2'];
-        $poliza = $_POST['poliza'];
-        $identifier = $_POST['identifier'];
-        $descripcion = $_POST['descripcion'];
-        $contratado = $_POST['contratado'];
-        $pneta = $_POST['pneta'];
-        $hsp = $_POST['hsp'];
-        $total = $_POST['total'];
-        $status = $_POST['status'];
-        $cobro = $_POST['cobro'];
-        $importe = $_POST['importe'];
-        $fecha = $_POST['fecha'];
-        $contidad_pte = $_POST['contidad_pte'];
+        $id = $_POST['data']['id'];
+        $id_cliente = $_POST['data']['id_cliente'];
+        $company = $_POST['data']['company'];
+        $mes_vto = $_POST['data']['mes_vto'];
+        $fecha_emision = $_POST['data']['fecha_emision'];
+        $cliente = $_POST['data']['cliente'];
+        $refer_cliente = $_POST['data']['refer_cliente'];
+        $cif = $_POST['data']['cif'];
+        $direccion = $_POST['data']['direccion'];
+        $telefono = $_POST['data']['telefono'];
+        $servicios = $_POST['data']['servicios'];
+        $company1 = $_POST['data']['company1'];
+        $agente = $_POST['data']['agente'];
+        $company2 = $_POST['data']['company2'];
+        $poliza = $_POST['data']['poliza'];
+        $identifier = $_POST['data']['identifier'];
+        $descripcion = $_POST['data']['descripcion'];
+        $contratado = $_POST['data']['contratado'];
+        $pneta = $_POST['data']['pneta'];
+        $hsp = $_POST['data']['hsp'];
+        $total = $_POST['data']['total'];
+        $status = $_POST['data']['status'];
+        $cobro = $_POST['data']['cobro'];
+        $importe = $_POST['data']['importe'];
+        $fecha = $_POST['data']['fecha'];
+        $contidad_pte = $_POST['data']['contidad_pte'];
         $sql="UPDATE `Contratos` SET `id_cliente` = {$id_cliente}, `company` = {$company}, `mes_vto` = {$mes_vto}, `fecha_emision` = '{$fecha_emision}', `cliente` = '{$cliente}', `refer_cliente` = '{$refer_cliente}', `cif` = '{$cif}', `direccion` = '{$direccion}', `telefono` = '{$telefono}', `servicios` = '{$servicios}', `company1` = '{$company1}', `agente` = {$agente}, `company2` = '{$company2}', `poliza` = '{$poliza}', `identifier` = '{$identifier}', `descripcion` = '{$descripcion}', `contratado` = '{$contratado}', `pneta` = '{$pneta}', `hsp` = '{$hsp}', `total` = '{$total}', `status` = '{$status}', `cobro` = '{$cobro}', `importe` = '{$importe}', `fecha` = '{$fecha}', `contidad_pte` = '{$contidad_pte}' WHERE `Contratos`.`id` = {$id};";
         if($bd->execute_single_query($sql)){
             echo json_encode(array('status' => 'success'));
@@ -224,12 +221,11 @@ switch($option){
             $sql="SELECT * FROM `Contratos` WHERE `{$where}` LIKE '%{$value}%'";
         }
         $sql="SELECT * FROM `Contratos`";
-        $result = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $result = $bd->get_rows();
         if($result){
             echo json_encode($result);
-        }else{
-            
-        }   
+        }
         break;
     default:
         
@@ -329,25 +325,23 @@ switch ($option) {
 /** Facturas */
 switch ($option) {
     case 'insertFactura':
-        $date = $_POST['date'];
-        $num = $_POST['num'];
-        $dirigido = $_POST['dirigido'];
-        $cif = $_POST['cif'];
-        $base = $_POST['base'];
-        $iva = $_POST['iva'];
-        $otros = $_POST['otros'];
-        $irpf = $_POST['irpf'];
-        $total = $_POST['total'];
-        $type = $_POST['type'];
-        $prestado = $_POST['prestado'];
-        $asunto = $_POST['asunto'];
-        $motivo = $_POST['motivo'];
-        $company = $_POST['company'];
+        $date = $_POST['data']['date'];
+        $num = $_POST['data']['num'];
+        $dirigido = $_POST['data']['dirigido'];
+        $cif = $_POST['data']['cif'];
+        $base = $_POST['data']['base'];
+        $iva = $_POST['data']['iva'];
+        $otros = $_POST['data']['otros'];
+        $irpf = $_POST['data']['irpf'];
+        $total = $_POST['data']['total'];
+        $type = $_POST['data']['type'];
+        $prestado = $_POST['data']['prestado'];
+        $asunto = $_POST['data']['asunto'];
+        $motivo = $_POST['data']['motivo'];
+        $company = $_POST['data']['company'];
         $sql="INSERT INTO `Facturas` (`date`, `num`, `dirigido`, `cif`, `base`, `iva`, `otros`, `irpf`, `total`, `type`, `prestado`, `asunto`, `motivo`, `company`) VALUES ('{$date}', {$num}, {$dirigido}, '{$cif}', {$base}, {$iva}, '{$otros}', {$irpf}, {$total}, {$type}, '{$prestado}', '{$asunto}', '{$motivo}', {$company});";
         if($bd->execute_single_query($sql)){
             echo json_encode(array('status' => 'success'));
-        }else{
-            
         }
         break;
     case 'updateFactura':
@@ -511,16 +505,9 @@ switch ($option) {
         break;
     case 'getFacturasCombustible':
         $sql="SELECT * FROM `Facturas_Combustible`;";
-        $result = $bd->execute_single_query($sql);
-        if($result){
-            $data = array();
-            while($row = $result->fetch_assoc()){
-                $data[] = $row;
-            }
-            echo json_encode(array('status' => 'success', 'data' => $data));
-        }else{
-            
-        }
+        $bd->get_results_from_query($sql);
+        $result = $bd->get_rows();
+        echo json_encode($result);
         break;
     default:
         
@@ -613,7 +600,8 @@ switch($option){
         break;
     case 'getProduccionMesAll':
         $sql="SELECT * FROM `Produccion_Mes`;";
-        $data = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:
@@ -667,7 +655,8 @@ switch ($option) {
         break;
     case 'getTransaccionContratoAll':
         $sql="SELECT * FROM `Transaccion_Contrato`;";
-        $data = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:
@@ -727,7 +716,8 @@ switch ($option) {
         break;
     case 'getTransaccionesAll':
         $sql="SELECT * FROM `Transacciones`;";
-        $data = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:
@@ -740,44 +730,36 @@ switch ($option) {
 /** Admin */
 switch ($option) {
     case 'insertAdmin':
-        $user = $_POST['user'];
-        $pass = $_POST['pass'];
+        $user = $_POST['data']['user'];
+        $pass = $_POST['data']['pass'];
         $sql="INSERT INTO `Admin` (`user`, `pass`) VALUES ('{$user}', '{$pass}');";
-        if($bd->execute_single_query($sql)){
-            echo json_encode(array('status' => 'success'));
-        }else{
-            
-        }
+        $bd->execute_single_query($sql);
+        echo json_encode(array('status' => 'success'));
         break;
     case 'updateAdmin':
-        $id = $_POST['id'];
-        $user = $_POST['user'];
-        $pass = $_POST['pass'];
+        $id = $_POST['data']['id'];
+        $user = $_POST['data']['user'];
+        $pass = $_POST['data']['pass'];
         $sql="UPDATE `Admin` SET `user` = '{$user}', `pass` = '{$pass}' WHERE `id` = {$id};";
-        if($bd->execute_single_query($sql)){
-            echo json_encode(array('status' => 'success'));
-        }else{
-            
-        }
+        $bd->execute_single_query($sql);
+        echo json_encode(array('status' => 'success'));
         break;
     case 'deleteAdmin':
         $id = $_POST['id'];
         $sql="DELETE FROM `Admin` WHERE `id` = {$id};";
-        if($bd->execute_single_query($sql)){
-            echo json_encode(array('status' => 'success'));
-        }else{
-            
-        }
+        echo json_encode(array('status' => 'success'));
         break;
     case 'getAdmin':
         $id = $_POST['id'];
         $sql="SELECT * FROM `Admin` WHERE `id` = {$id};";
-        $data = $bd->execute_single_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     case 'getAdminAll':
         $sql="SELECT * FROM `Admin`;";
-        $data = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:
@@ -788,7 +770,7 @@ switch ($option) {
 /** Clientes */
 switch ($option) {
     case 'insertCliente':
-        $company = $_POST['company'];
+        $company = $_POST['data']['company'];
         $sql="INSERT INTO `Cliente` (`company`) VALUES ({$company});";
         if($bd->execute_single_query($sql)){
             echo json_encode(array('status' => 'success'));
@@ -798,7 +780,7 @@ switch ($option) {
         break;
     case 'updateCliente':
         $id = $_POST['id'];
-        $company = $_POST['company'];
+        $company = $_POST['data']['company'];
         $sql="UPDATE `Cliente` SET `company` = {$company} WHERE `id` = {$id};";
         if($bd->execute_single_query($sql)){
             echo json_encode(array('status' => 'success'));
@@ -818,12 +800,14 @@ switch ($option) {
     case 'getCliente':
         $id = $_POST['id'];
         $sql="SELECT * FROM `Cliente` WHERE `id` = {$id};";
-        $data = $bd->execute_single_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     case 'getClienteAll':
         $sql="SELECT * FROM `Cliente`;";
-        $data = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:
@@ -869,7 +853,8 @@ switch ($option) {
         break;
     case 'getFormas_pagoAll':
         $sql="SELECT * FROM `Formas_pago`;";
-        $data = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:
@@ -903,8 +888,6 @@ switch ($option) {
         $sql="DELETE FROM `Tipos_Entidades` WHERE `id` = {$id};";
         if($bd->execute_single_query($sql)){
             echo json_encode(array('status' => 'success'));
-        }else{
-            
         }
         break;
     case 'getTipos_Entidades':
@@ -915,12 +898,13 @@ switch ($option) {
         break;
     case 'getTipos_EntidadesAll':
         $sql="SELECT * FROM `Tipos_Entidades`;";
-        $data = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:
         
-        break;
+    break;
 }
 
 /** Tipos Factura */
@@ -961,7 +945,8 @@ switch ($option) {
         break;
     case 'getTipos_FacturaAll':
         $sql="SELECT * FROM `Tipos_Factura`;";
-        $data = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:
@@ -1007,7 +992,8 @@ switch ($option) {
         break;
     case 'getTipos_Factura_CombustibleAll':
         $sql="SELECT * FROM `Tipos_Factura_Combustible`;";
-        $data = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:
@@ -1055,7 +1041,8 @@ switch ($option) {
         break;
     case 'getLiquidaciones_ECTAll':
         $sql="SELECT * FROM `Liquidaciones_ECT`;";
-        $data = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:
@@ -1106,12 +1093,14 @@ switch ($option) {
     case 'getPrecio_Litros':
         $id = $_POST['id'];
         $sql="SELECT * FROM `Precio_Litros` WHERE `id` = {$id};";
-        $data = $bd->execute_single_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     case 'getPrecio_LitrosAll':
         $sql="SELECT * FROM `Precio_Litros`;";
-        $data = $bd->execute_query($sql);
+        $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:
@@ -1159,7 +1148,8 @@ switch ($option) {
         break;
     case 'getPresupuestoAll':
         $sql="SELECT * FROM `Presupuesto`;";
-        $data = $bd->execute_query($sql);
+        $data = $bd->get_results_from_query($sql);
+        $data = $bd->get_rows();
         echo json_encode($data);
         break;
     default:

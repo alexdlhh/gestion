@@ -3,7 +3,7 @@ class ModeloBD {
     private static $db_host = '192.168.1.108';
     private static $db_user = 'root';
     private static $db_pass = 'nologo';
-    /*private static $db_host = 'localhost';
+    /*private static $db_host = 'agenciapentabrand.com';
     private static $db_user = 'root';
     private static $db_pass = '';*/
     protected $db_name = '';

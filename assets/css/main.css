@@ -1,7 +1,41 @@
 .column{
-    background-color: rgb(21, 125, 252);
+    background-color: rgb(10, 86, 47);
     color: white;
 }
 ul li a{
     color: white;
+}
+.filters{
+    background-color: rgb(208, 232, 219);
+    color: white;
+}
+#contenido{
+    margin-top: -21px;
+}
+.vh100{
+    height: 100vh;
+}
+.hpercen100{
+    height: 100%;
+}
+body{
+    overflow-x: hidden;
+}
+thead{
+    background-color: rgb(10, 86, 47) !important;
+}
+.rowfix{
+    margin-bottom: 0px;
+}
+.active{
+    background-color: rgb(1, 36, 17) !important;
+}
+.side_nav li{
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.side_nav li a{
+    width: 100%;
+    padding: 10px;
 }
