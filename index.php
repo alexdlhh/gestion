@@ -1,7 +1,7 @@
 <?php
 
 if($_COOKIE['login']==true){
-	header('Location: /admin/index.php');
+	header('Location: admin/index.php');
 }else{
     ?>
     <!DOCTYPE html>

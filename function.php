@@ -4,6 +4,26 @@ function remove_utf8_bom($text){
     $text = preg_replace("/^$bom/", '', $text);
     return $text;
 }
+function get_entidades(){
+    $curl = curl_init();
+    $entidades = [];
+    curl_setopt_array($curl, array(
+    CURLOPT_URL => 'https://www.agenciapentabrand.com/gestion/api.php',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => '',
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS => array('option' => 'getEntities'),
+    ));
+
+    $entidades = curl_exec($curl);
+    curl_close($curl);
+
+    return $entidades;
+}
 function get_facturas(){
     $curl = curl_init();
     $facturas = [];

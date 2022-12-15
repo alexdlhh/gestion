@@ -5,7 +5,7 @@ $(document).ready(function(){
         var option = 'login';
         if(username != '' && password != ''){
             $.ajax({
-                url:"/api.php",
+                url:"https://agenciapentabrand.com/gestion/api.php",
                 method:"POST",
                 data:{username:username, password:password, option:option},
                 success:function(data){
@@ -15,6 +15,7 @@ $(document).ready(function(){
                         alert("Wrong Data");
                     }else{
                     }
+                    location.reload();
                 }
             });
         }else{
